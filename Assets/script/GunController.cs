@@ -5,62 +5,67 @@ using UnityEngine.PlayerLoop;
 
 public class GunController : MonoBehaviour
 {
-    //弾丸のプレファブ
-    [SerializeField] GameObject bulletPrefab;
-    //照準
-    [SerializeField] Transform firePoint;
-    //発射のインターバル
-    [SerializeField] float shotInterval = 1.0f;
-    //銃弾の速度
-    [SerializeField] float bulletspeed = 20f;
-    [SerializeField] Camera cam;
-    //移動速度
-    [SerializeField] float moveSpeed = 1f;
-    float timer;
-    Rigidbody2D rb = default;
-    Vector2 mousePos;
-    Vector2 movement;
+    /// <summary> 弾丸のプレファブ </summary>
+    [SerializeField] GameObject _bulletPrefab;
+    /// <summary> 照準 </summary>
+    [SerializeField] Transform _firePoint;
+    /// <summary> 発射間隔 </summary>
+    [SerializeField] float _shotInterval = 1.0f;
+    /// <summary> 銃弾の速度 </summary>
+    [SerializeField] float _bulletspeed = 20f;
+    /// <summary> カメラ </summary>
+    [SerializeField] Camera _cam;
+    /// <summary> 移動速度 </summary>
+    [SerializeField] float _moveSpeed = 1f;
+    public AudioClip _gunSound;
+    AudioSource _audioSource;
+    float _timer;
+    Rigidbody2D _rb = default;
+    Vector2 _mousePos;
+    Vector2 _movement;
 
 
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        timer = shotInterval;
-        cam = Camera.main;
+        _rb = GetComponent<Rigidbody2D>();
+        _timer = _shotInterval;
+        _cam = Camera.main;
+        _audioSource = GetComponent<AudioSource>();
         
     }
     void Update()
     {
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
 
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetMouseButtonDown(0) && timer > shotInterval) 
+        if(Input.GetMouseButtonDown(0) && _timer > _shotInterval) 
         {
-            timer = 0;
+            _timer = 0;
             Shot();
+            _audioSource.PlayOneShot(_gunSound);
         }
 
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        _movement.x = Input.GetAxis("Horizontal");
+        _movement.y = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
     {
         //移動処理
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + _movement * _moveSpeed * Time.fixedDeltaTime);
         //マウスの方向に向きを合わせる
-        Vector2 lookDir = mousePos - rb.position;
+        Vector2 lookDir = _mousePos - _rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        rb.rotation = angle;
+        _rb.rotation = angle;
     }
 
     void Shot() //弾丸発射処理
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletspeed, ForceMode2D.Impulse);
+        rb.AddForce(_firePoint.up * _bulletspeed, ForceMode2D.Impulse);
     }
 
  

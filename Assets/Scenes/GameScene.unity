@@ -349,17 +349,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222111397131611363, guid: da04df9140611964881e90c08ec0f70f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1456584603743297732, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_Name
       value: Enemy_01
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.57
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 3.87
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1468,11 +1472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.91
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8002059953021716923, guid: da04df9140611964881e90c08ec0f70f, type: 3}
       propertyPath: m_LocalPosition.z
