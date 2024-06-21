@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] public int HP = 3;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int _bulletDamage = 1;
+    [SerializeField] int _arrowDamage = 2;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +24,12 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("ƒoƒŒƒbƒg‚ª“–‚½‚Á‚½");
             Destroy(collision.gameObject);
-            HP -= 1;
+            HP -= _bulletDamage;
+        }
+        else if(collision.gameObject.tag == "Arrow")
+        {
+            Destroy(collision.gameObject);
+            HP -= _arrowDamage;
         }
     }
 

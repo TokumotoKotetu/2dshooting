@@ -29,25 +29,25 @@ public class CrossbowController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
         if (timer > shotInterval)
         {
             timer = 0f;
             Shot();
         }
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        if(Target != null)
+        try
         {
             Target = enemyScanner.ScanWithFindTag();
             enemyPos = Target.transform.position;
         }
-        else
+        catch
         {
 
         }
-        
-        
     }
 
     private void FixedUpdate()
