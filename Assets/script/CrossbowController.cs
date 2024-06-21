@@ -37,8 +37,16 @@ public class CrossbowController : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        Target = enemyScanner.ScanWithFindTag();
-        enemyPos = Target.transform.position;
+        if(Target != null)
+        {
+            Target = enemyScanner.ScanWithFindTag();
+            enemyPos = Target.transform.position;
+        }
+        else
+        {
+
+        }
+        
         
     }
 
