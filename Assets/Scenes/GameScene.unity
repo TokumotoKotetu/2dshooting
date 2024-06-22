@@ -470,7 +470,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409663912286309025, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_Name
-      value: Spawner (1)
+      value: Spawner_down
       objectReference: {fileID: 0}
     - target: {fileID: 3316102845672328580, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,7 +558,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409663912286309025, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_Name
-      value: Spawner (3)
+      value: Spawner_left
       objectReference: {fileID: 0}
     - target: {fileID: 3316102845672328580, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1314,6 +1314,7 @@ GameObject:
   - component: {fileID: 714136986}
   - component: {fileID: 714136987}
   - component: {fileID: 714136988}
+  - component: {fileID: 714136989}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1362,6 +1363,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6823e8440fe501b4cb4f5e9d95768b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &714136989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714136985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1114c6d7fb9e041a1ba5e2bdf4a5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 0
+  _spawnMinusTime: 1
+  _spawnLevel: 1
+  _spawnLevelNeedKill: 10
 --- !u!1 &716602975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409663912286309025, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_Name
-      value: Spawner (2)
+      value: Spawner_right
       objectReference: {fileID: 0}
     - target: {fileID: 3316102845672328580, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2862,7 +2879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409663912286309025, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_Name
-      value: Spawner
+      value: Spawner_up
       objectReference: {fileID: 0}
     - target: {fileID: 3316102845672328580, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2914,11 +2931,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 714136986}
+  - {fileID: 716602978}
   - {fileID: 89588707}
   - {fileID: 2110738650}
   - {fileID: 533851285}
-  - {fileID: 716602978}
   - {fileID: 1540671541}
-  - {fileID: 714136986}
   - {fileID: 905053731}
   - {fileID: 129467926}

@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float _shotSpeed;
     Rigidbody2D rb;
     PlayerScanner _playerScanner;
+    GameController _gameController;
     GameObject Target;
     Vector2 _playerPos;
     float timer = 0f;
@@ -23,6 +24,8 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _playerScanner = GetComponent<PlayerScanner>();
+        GameObject obj = GameObject.Find("GameController");
+        _gameController = obj.GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class EnemyController : MonoBehaviour
 
         if (HP <= 0)
         {
+            _gameController._score += 1;
             Destroy(gameObject);
         }
 

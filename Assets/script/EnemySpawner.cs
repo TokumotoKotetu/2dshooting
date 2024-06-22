@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject _prefabToSpawn;
-    [SerializeField] float _spawnInterval;
+    [SerializeField] public float _spawnInterval;
     private BoxCollider2D _boxCollider2D;
     bool _isPose = false;
     void Start()
