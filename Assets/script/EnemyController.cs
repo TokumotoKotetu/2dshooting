@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] public int HP = 3;
+    [SerializeField] float _moveSpeed = 1f;
     [SerializeField] int _bulletDamage = 1;
     [SerializeField] int _arrowDamage = 2;
     [SerializeField] int _attackInterval;
@@ -50,6 +51,8 @@ public class EnemyController : MonoBehaviour
         {
 
         }
+
+
     }
 
     private void FixedUpdate()
@@ -57,6 +60,9 @@ public class EnemyController : MonoBehaviour
         Vector2 lookDir = _playerPos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
         rb.rotation = angle;
+
+        Vector2 velocity = gameObject.transform.up * _moveSpeed;
+        rb.position += velocity * Time.deltaTime;
     }
 
     void Shot()

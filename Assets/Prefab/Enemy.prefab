@@ -102,12 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 3
+  _moveSpeed: 0.5
   _bulletDamage: 1
   _arrowDamage: 2
   _attackInterval: 3
   _shotPrefab: {fileID: 4609799694497368963, guid: e78ca64fdd812f34fa60270883b9f391, type: 3}
   _firePoint: {fileID: 4481080232448481792}
-  _shotSpeed: 1
+  _shotSpeed: 2
 --- !u!114 &2303017439033659955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ CircleCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295

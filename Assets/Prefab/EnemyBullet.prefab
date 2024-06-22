@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8890689410081616139}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.012738852, b: 0, a: 1}
+  m_Color: {r: 0.93090844, g: 1, b: 0.4481132, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -130,7 +130,7 @@ CircleCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBullet: 0
   _myBulletDestroyTime: 3.5
-  _enemyBulletDestroyTime: 10
+  _enemyBulletDestroyTime: 30

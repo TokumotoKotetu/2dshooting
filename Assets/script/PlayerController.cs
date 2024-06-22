@@ -88,10 +88,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Enemy" || collision.tag == "EnemyBullet")
         {
             StartCoroutine(_hit());
             HP -= 1;
+            if(collision.tag == "EnemyBullet")
+            {
+                Destroy(collision.gameObject);
+            }
         }
         
 

@@ -104,7 +104,7 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 3492578445471461354, guid: b84027db9e0b38e4296a1fbd9657bf0d, type: 3}
   _firePoint: {fileID: 6016554028621677458}
   _shotInterval: 3
-  _arrowSpeed: 20
+  _arrowSpeed: 10
   _moveSpeed: 5
   _arrowSound: {fileID: 8300000, guid: ffac571eae4efe548bf867b1a8304e8a, type: 3}
 --- !u!114 &2028705309299339910
