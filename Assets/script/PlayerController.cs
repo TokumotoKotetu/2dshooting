@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject handgun;
     [SerializeField] GameObject crossbow;
     [SerializeField] GameObject player;
-    [SerializeField] int HP = 10;
+    [SerializeField] public int HP = 10;
     GameObject obj;
     [SerializeField] GameObject[] weaponPos;
     [SerializeField] float _flashInterval;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     int weaponCounter = 0;   
     Vector2 movement;
     Vector2 mousePos;
-    int i = 0;
+    int _haveWeaponNumber = 0;
     bool _isHit;
     PlayerState state;
 
@@ -46,28 +46,35 @@ public class PlayerController : MonoBehaviour
         //ïêäÌÇÃè¢ä´
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if(weaponCounter == i && i < weaponPos.Length)
-            {
-                obj = (GameObject)Instantiate(handgun, weaponPos[i].transform.position, Quaternion.identity);
-                obj.transform.parent = player.transform;
-                weaponCounter++;
-                i++;
-            }
+            GetGun();
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-
-            if (weaponCounter == i && i < weaponPos.Length)
-            {
-                obj = (GameObject)Instantiate(crossbow, weaponPos[i].transform.position, Quaternion.identity);
-                obj.transform.parent = player.transform;
-                weaponCounter++;
-                i++;
-            }
+            GetCrossbow();
         }
-        }
+    }
 
+    public void GetGun()
+    {
+        if (weaponCounter == _haveWeaponNumber && _haveWeaponNumber < weaponPos.Length)
+        {
+            obj = (GameObject)Instantiate(handgun, weaponPos[_haveWeaponNumber].transform.position, Quaternion.identity);
+            obj.transform.parent = player.transform;
+            weaponCounter++;
+            _haveWeaponNumber++;
+        }
+    }
+    public void GetCrossbow()
+    {
+        if (weaponCounter == _haveWeaponNumber && _haveWeaponNumber < weaponPos.Length)
+        {
+            obj = (GameObject)Instantiate(crossbow, weaponPos[_haveWeaponNumber].transform.position, Quaternion.identity);
+            obj.transform.parent = player.transform;
+            weaponCounter++;
+            _haveWeaponNumber++;
+        }
+    }
     private void FixedUpdate()
     {
         //ÉvÉåÉCÉÑÅ[ÇÃà⁄ìÆ

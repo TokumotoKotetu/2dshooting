@@ -5,11 +5,16 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject tabPanel;
+    [SerializeField] GameObject gameOverPanel;
     bool tabMenuOpen;
+    PlayerController playerController;
     private void Start()
     {
         CloseMenu();
+        CloseGameOver();
         tabMenuOpen = false;
+        GameObject obj = GameObject.Find("Player");
+        playerController = obj.GetComponent<PlayerController>();
     }
     private void Update()
     {
@@ -25,6 +30,11 @@ public class MenuController : MonoBehaviour
             CloseMenu();
             tabMenuOpen = false;
         }
+
+        if(playerController.HP <= 0)
+        {
+            GameOver();
+        }
     }
 
     void OpenMenu()
@@ -37,5 +47,16 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         tabPanel.SetActive(false);
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
+    }
+    void CloseGameOver()
+    {
+        Time.timeScale = 1;
+        gameOverPanel.SetActive(false);
     }
 }
