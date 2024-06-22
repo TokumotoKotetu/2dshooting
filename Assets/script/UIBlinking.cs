@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIBlinking : MonoBehaviour
 {
-    [SerializeField] private Behaviour _target;
     /// <summary> “_–ÅŽüŠú[s] </summary>
     [SerializeField] private float _cycle = 1;
-    private double _time;
-
+    private float _time;
+    private Text _text;
+    private void Start()
+    {
+        _text = GetComponent<Text>();
+    }
     void Update()
     {
-        _time = Time.deltaTime;
+        _text.color = GetTextColoer(_text.color);
 
-        var repeatValue = Mathf.Repeat((float)_time, _cycle);
-
-        _target.enabled = repeatValue >= _cycle * 0.5f;
+    }
+    Color GetTextColoer(Color color)
+    {
+       _time += Time.deltaTime * _cycle;
+        color.a = Mathf.Sin(_time);
+        return color;
     }
 }
