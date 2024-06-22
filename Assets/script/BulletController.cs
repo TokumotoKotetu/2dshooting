@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    [SerializeField] bool _playerBullet = true;
+    [SerializeField] float _myBulletDestroyTime;
+    [SerializeField] float _enemyBulletDestroyTime;
     private void Start()
     {
-        Invoke(nameof(obDestroy), 3.5f);
-
+        if (_playerBullet)
+        {
+            Invoke(nameof(obDestroy), _myBulletDestroyTime);
+        }
+        else
+        {
+            Invoke(nameof(obDestroy), _enemyBulletDestroyTime);
+        }
+        
     }
-
     private void obDestroy()
     {
         Destroy(this.gameObject);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-
-        }
-        else
-        {
-            //Destroy(this.gameObject);
-        }
-        
-    }
-
 }
