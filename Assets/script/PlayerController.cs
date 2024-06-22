@@ -13,35 +13,39 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject handgun;
     [SerializeField] GameObject crossbow;
     [SerializeField] GameObject player;
+    [SerializeField] int HP = 10;
     GameObject obj;
     [SerializeField] GameObject[] weaponPos;
-
-
+    [SerializeField] float _flashInterval;
+    [SerializeField] int loopCount;
+    PolygonCollider2D _polygonCollider2d;
+    SpriteRenderer _spriteRenderer;
+    public AudioClip _damage;
+    AudioSource _audioSource;
     int weaponCounter = 0;   
     Vector2 movement;
     Vector2 mousePos;
-
     int i = 0;
+    bool _isHit;
+    PlayerState state;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();    
-        
+        _polygonCollider2d = GetComponent<PolygonCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //ïêäÌÇÃè¢ä´
         if (Input.GetKeyDown(KeyCode.G))
         {
-
             if(weaponCounter == i && i < weaponPos.Length)
             {
                 obj = (GameObject)Instantiate(handgun, weaponPos[i].transform.position, Quaternion.identity);
@@ -49,7 +53,6 @@ public class PlayerController : MonoBehaviour
                 weaponCounter++;
                 i++;
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.H))
@@ -69,8 +72,43 @@ public class PlayerController : MonoBehaviour
     {
         //ÉvÉåÉCÉÑÅ[ÇÃà⁄ìÆ
         m_rb.MovePosition(m_rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_isHit)
+        {
+            return;
+        }
+
+        if (collision.tag == "Enemy")
+        {
+            StartCoroutine(_hit());
+            HP -= 1;
+        }
+        
 
     }
 
+    IEnumerator _hit()
+    {
+        _isHit = true;
+        _audioSource.PlayOneShot(_damage);
+        _polygonCollider2d.enabled = false;
 
+        for(int j = 0; j < loopCount; j++)
+        {
+            yield return new WaitForSeconds(_flashInterval);
+            _spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(_flashInterval);
+            _spriteRenderer.enabled = true;
+        }
+        _polygonCollider2d.enabled = true;
+        _isHit = false;
+    }
+
+    enum PlayerState
+    {
+        NOMAL,DAMAGED,MUTEKI
+    }
 }
