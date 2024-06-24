@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class StartSceneController : MonoBehaviour
 {
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _pushAudio;
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1;
 
     }
@@ -20,6 +23,7 @@ public class StartSceneController : MonoBehaviour
     }
     public void change_button()
     {
+        _audioSource.PlayOneShot(_pushAudio);
         SceneManager.LoadScene("GameScene");
         Debug.Log("ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½");
     }
