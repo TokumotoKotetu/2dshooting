@@ -27,9 +27,7 @@ public class GameController : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(_spawnLevel);
 
-        Debug.Log(_score);
         if (_score >= _spawnLevelNeedKill * _spawnLevel && _enemySpawner_up._spawnInterval > 1)
         {
             _spawnLevel += 1;

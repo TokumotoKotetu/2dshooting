@@ -9,6 +9,7 @@ TagManager:
   - Arrow
   - Enemy
   - EnemyBullet
+  - Exp
   layers:
   - Default
   - TransparentFX

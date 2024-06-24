@@ -6,22 +6,21 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    //ÉvÉåÉCÉÑÅ[ÇÃà⁄ìÆÇ∑ÇÈóÕ
-    [SerializeField] public float moveSpeed = 100f;
+    SpriteRenderer _spriteRenderer;
+    PolygonCollider2D _polygonCollider2d;
     Rigidbody2D m_rb = default;
+    AudioSource _audioSource;
     [SerializeField] Camera cam;
+    GameObject obj;
     [SerializeField] GameObject handgun;
     [SerializeField] GameObject crossbow;
     [SerializeField] GameObject player;
-    [SerializeField] public int HP = 10;
-    GameObject obj;
     [SerializeField] GameObject[] weaponPos;
+    [SerializeField] public int HP = 10;
+    [SerializeField] public float moveSpeed = 100f;
     [SerializeField] float _flashInterval;
     [SerializeField] int loopCount;
-    PolygonCollider2D _polygonCollider2d;
-    SpriteRenderer _spriteRenderer;
     public AudioClip _damage;
-    AudioSource _audioSource;
     int weaponCounter = 0;   
     Vector2 movement;
     Vector2 mousePos;

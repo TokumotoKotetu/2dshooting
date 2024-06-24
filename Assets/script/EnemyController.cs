@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -13,7 +14,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject _shotPrefab;
     [SerializeField] Transform _firePoint;
     [SerializeField] float _shotSpeed;
+    [SerializeField] int _minDropExp, _maxDropExp;
+    [SerializeField] GameObject _expPrefab;
     Rigidbody2D rb;
+    CircleCollider2D _circleCollider2D;
     PlayerScanner _playerScanner;
     GameController _gameController;
     GameObject Target;
@@ -26,6 +30,7 @@ public class EnemyController : MonoBehaviour
         _playerScanner = GetComponent<PlayerScanner>();
         GameObject obj = GameObject.Find("GameController");
         _gameController = obj.GetComponent<GameController>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,14 @@ public class EnemyController : MonoBehaviour
         if (HP <= 0)
         {
             _gameController._score += 1;
+            int _dropExp = Random.Range(_minDropExp, _maxDropExp + 1);
+            for(int i = _dropExp; i > 0; i--) 
+            {
+                float radius = _circleCollider2D.radius;
+                var expPos = radius * Random.insideUnitCircle;
+                Vector2 myPos = transform.position;
+                GameObject exp = Instantiate(_expPrefab,new Vector2(expPos.x + myPos.x ,expPos.y + myPos.y),Quaternion.identity);
+            }
             Destroy(gameObject);
         }
 

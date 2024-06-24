@@ -1720,90 +1720,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869300820}
   m_CullTransparentMesh: 1
---- !u!1 &905053729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 905053731}
-  - component: {fileID: 905053730}
-  m_Layer: 0
-  m_Name: Exp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &905053730
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905053729}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5776859, g: 1, b: 0.26274514, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &905053731
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905053729}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7, y: 0.32, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925460014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,6 +2503,7 @@ GameObject:
   - component: {fileID: 2110738648}
   - component: {fileID: 2110738651}
   - component: {fileID: 2110738646}
+  - component: {fileID: 2110738653}
   - component: {fileID: 2110738652}
   m_Layer: 0
   m_Name: Player
@@ -2607,17 +2524,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0074a287a126b84e91aba01df8bde89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   cam: {fileID: 519420031}
   handgun: {fileID: 1055857949597529977, guid: 8a6107df0e6621342a1c3bc4926088b2, type: 3}
   crossbow: {fileID: 2740604183149103261, guid: 82a8c7ab8fde54c448931c3346c45d1d, type: 3}
   player: {fileID: 2110738645}
-  HP: 100
   weaponPos:
   - {fileID: 419989891}
   - {fileID: 303889744}
   - {fileID: 435367104}
   - {fileID: 1577725804}
+  HP: 100
+  moveSpeed: 5
   _flashInterval: 0.2
   loopCount: 5
   _damage: {fileID: 8300000, guid: 7a9cd5eb21a275944a85ce5ba4f88950, type: 3}
@@ -2690,7 +2607,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.4292453, g: 0.5254902, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2864,6 +2781,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2110738653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110738645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e609f0a56d784ca4a80a72ab3e1f09ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHp: 3
+  _hp: 3
+  _experience: 0
+  _nextExperience: 0
+  _level: 1
 --- !u!4 &2132546100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3316102845672328580, guid: dec753dab8a46e14fa116f6ab16dfc0d, type: 3}
@@ -2937,5 +2871,4 @@ SceneRoots:
   - {fileID: 2110738650}
   - {fileID: 533851285}
   - {fileID: 1540671541}
-  - {fileID: 905053731}
   - {fileID: 129467926}
