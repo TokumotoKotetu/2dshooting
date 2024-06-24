@@ -7,12 +7,31 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject _prefabToSpawn;
     [SerializeField] public float _spawnInterval;
+    GameController _gameController;
     private BoxCollider2D _boxCollider2D;
     bool _isPose = false;
+    float time = 0;
     void Start()
     {
         _boxCollider2D = GetComponent<BoxCollider2D>();
         StartCoroutine(SpawnObject());
+        GameObject obj = GameObject.Find("GameController");
+        _gameController = obj.GetComponent<GameController>();
+    }
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if(time >= 30)
+        {
+            if(time >= 10)
+            {
+                _spawnInterval = 1;
+            }
+            else
+            {
+                _spawnInterval = 3;
+            }
+        }
     }
     IEnumerator SpawnObject()
     {

@@ -91,4 +91,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabToSpawn: {fileID: 1456584603743297732, guid: da04df9140611964881e90c08ec0f70f, type: 3}
-  _spawnInterval: 10
+  _spawnInterval: 5

@@ -47,6 +47,5 @@ public class ExpController : MonoBehaviour
     {
         _onHit = true;
         _onHIts += 1;
-        Debug.Log("子オブジェクトが当たったよ");
     }
 }

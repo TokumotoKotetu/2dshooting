@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b02a3aafb22d42408316f65641c634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 3
-  _moveSpeed: 0.5
-  _bulletDamage: 1
-  _arrowDamage: 2
+  HP: 50
+  _moveSpeed: 0.8
+  _bulletDamage: 5
+  _arrowDamage: 50
   _attackInterval: 3
   _shotPrefab: {fileID: 4609799694497368963, guid: e78ca64fdd812f34fa60270883b9f391, type: 3}
   _firePoint: {fileID: 4481080232448481792}
@@ -112,6 +112,7 @@ MonoBehaviour:
   _minDropExp: 2
   _maxDropExp: 10
   _expPrefab: {fileID: 414254363683589027, guid: 6269a0e034051444caae20ddf3cc6171, type: 3}
+  _invincibleTime: 0
 --- !u!114 &2303017439033659955
 MonoBehaviour:
   m_ObjectHideFlags: 0

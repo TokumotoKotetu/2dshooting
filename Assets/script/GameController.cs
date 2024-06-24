@@ -9,43 +9,38 @@ public class GameController : MonoBehaviour
     public int _score = 0;
     [SerializeField] Text _scoreText;
     [SerializeField] Text _lvText;
+    [SerializeField] Text _endScoreText;
+    [SerializeField] Text _clearScoreText;
+    [SerializeField] int _timeLimit = 60;
+    [SerializeField] Text _timerText;
+    [SerializeField] Text _endTimerText;
+    [SerializeField] GameObject _gameClearCanvas;
     LevelController _levelController;
-    public float _spawnMinusTime = 1;//àÍìxÇ…ÉXÉ|Å[Éìä¥äoÇå∏ÇÁÇ∑ïbêî
-    [SerializeField]int _spawnLevel = 1;
-    [SerializeField] int _spawnLevelNeedKill = 10;
-    EnemySpawner _enemySpawner_up;
-    EnemySpawner _enemySpawner_down;
-    EnemySpawner _enemySpawner_right;
-    EnemySpawner _enemySpawner_left;
+
     public int _level;
+    float time;
     public void Start()
     {
         GameObject obj = GameObject.Find("Player");
         _levelController = obj.GetComponent<LevelController>();
-        GameObject objup = GameObject.Find("Spawner_up");
-        GameObject objdown = GameObject.Find("Spawner_down");
-        GameObject objright = GameObject.Find("Spawner_right");
-        GameObject objleft = GameObject.Find("Spawner_left");
-
-        _enemySpawner_up = objup.GetComponent<EnemySpawner>();
-        _enemySpawner_down = objdown.GetComponent<EnemySpawner>();
-        _enemySpawner_right = objright.GetComponent<EnemySpawner>();
-        _enemySpawner_left = objleft.GetComponent<EnemySpawner>();
-
-        
+        _gameClearCanvas.SetActive(false);
     }
     public void Update()
     {
-        _level = _levelController._level;
+        time += Time.deltaTime;
+        int remaining = _timeLimit - (int)time;
+        _timerText.text = $"ÇÃÇ±ÇË:{remaining.ToString("D3")}";
+        _endTimerText.text = $"ÇÃÇ±ÇË:{remaining.ToString("D3")}ïb";
+        _level = _levelController._level - 2;
         _scoreText.text ="ìGÇì|ÇµÇΩêî :" + _score;
-        _lvText.text = "Lv :" + _level;
-        if (_score >= _spawnLevelNeedKill * _spawnLevel && _enemySpawner_up._spawnInterval > 1)
+        _endScoreText.text = "ìGÇì|ÇµÇΩêî :" + _score;
+        _clearScoreText.text = "ìGÇì|ÇµÇΩêî :" + _score;
+        _lvText.text = "Lv :" + _level ;     
+        
+        if(_timeLimit < time)
         {
-            _spawnLevel += 1 + _levelController._level;
-            _enemySpawner_up._spawnInterval -= _spawnMinusTime;   
-            _enemySpawner_down._spawnInterval -= _spawnMinusTime;
-            _enemySpawner_right._spawnInterval -= _spawnMinusTime;
-            _enemySpawner_left._spawnInterval -= _spawnMinusTime;
+            _gameClearCanvas.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }

@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float _shotSpeed;
     [SerializeField] int _minDropExp, _maxDropExp;
     [SerializeField] GameObject _expPrefab;
+    [SerializeField] float _invincibleTime = 0.5f;
     Rigidbody2D rb;
     CircleCollider2D _circleCollider2D;
     PlayerScanner _playerScanner;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour
     GameObject Target;
     Vector2 _playerPos;
     float timer = 0f;
+    bool _isHit;
 
     private void Start()
     {
@@ -91,18 +93,29 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isHit)
+        {
+            return;
+        }
+
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log("ƒoƒŒƒbƒg‚ª“–‚½‚Á‚½");
-            Destroy(collision.gameObject);
             HP -= _bulletDamage;
+            //StartCoroutine(Hit());           
         }
         else if(collision.gameObject.tag == "Arrow")
-        {
-            Destroy(collision.gameObject);
+        {                       
             HP -= _arrowDamage;
+            //StartCoroutine(Hit()); 
         }
     }
-
+    IEnumerator Hit()
+    {
+        _isHit = true;
+        _circleCollider2D.enabled = false;
+        yield return new WaitForSeconds(_invincibleTime);
+        _circleCollider2D.enabled = true;
+        _isHit = false;
+    }
 
 }

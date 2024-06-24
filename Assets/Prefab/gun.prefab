@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7991278311149639729}
   - component: {fileID: 8791860131063264691}
-  - component: {fileID: 6991318751665566045}
+  - component: {fileID: 6112430833811672608}
+  - component: {fileID: 1094646663925446108}
   - component: {fileID: -6581934706679451115}
   - component: {fileID: -5193092844972902311}
   m_Layer: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6991318751665566045
+--- !u!114 &6112430833811672608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,16 +98,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1055857949597529977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d041aab2a344ab4b917d68c715adfd4, type: 3}
+  m_Script: {fileID: 11500000, guid: c1315c8e0e7714b49b05959fe12d08eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 2198398765058359824, guid: 46bd1a1e461646f48bb3952f338afe44, type: 3}
+  _arrowPrefab: {fileID: 2198398765058359824, guid: 46bd1a1e461646f48bb3952f338afe44, type: 3}
   _firePoint: {fileID: 7100464902972286927}
-  _shotInterval: 1
-  _bulletspeed: 20
-  _cam: {fileID: 0}
+  _shotInterval: 0.1
+  _arrowSpeed: 20
   _moveSpeed: 5
-  _gunSound: {fileID: 8300000, guid: 15e55f61af95b384992c63f0b636fd81, type: 3}
+  _toReloadNumber: 20
+  _reloadTime: 5
+  _arrowSound: {fileID: 8300000, guid: 15e55f61af95b384992c63f0b636fd81, type: 3}
+--- !u!114 &1094646663925446108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055857949597529977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0ab47631d93ac4facbb83510014a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
 --- !u!50 &-6581934706679451115
 Rigidbody2D:
   serializedVersion: 4
@@ -146,7 +161,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 15e55f61af95b384992c63f0b636fd81, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

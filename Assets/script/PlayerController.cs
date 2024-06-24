@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     SpriteRenderer _spriteRenderer;
-    PolygonCollider2D _polygonCollider2d;
+    CircleCollider2D _circleCollider2d;
     Rigidbody2D m_rb = default;
     AudioSource _audioSource;
     [SerializeField] Camera cam;
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject handgun;
     [SerializeField] GameObject crossbow;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject[] weaponPos;
+    [SerializeField] public GameObject[] weaponPos;
     LevelController _levelController;
     [SerializeField] public float moveSpeed = 100f;
     [SerializeField] float _flashInterval;
@@ -24,17 +24,16 @@ public class PlayerController : MonoBehaviour
     int weaponCounter = 0;   
     Vector2 movement;
     Vector2 mousePos;
-    int _haveWeaponNumber = 0;
+    public int _haveWeaponNumber = 0;
     bool _isHit;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();    
-        _polygonCollider2d = GetComponent<PolygonCollider2D>();
+        _circleCollider2d = GetComponent<CircleCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
         _levelController = GetComponent<LevelController>();
-        GetGun();
     }
 
     void Update()
@@ -42,17 +41,6 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        //ïêäÌÇÃè¢ä´
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            GetGun();
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            GetCrossbow();
-        }
     }
 
     public void GetGun()
@@ -106,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         _isHit = true;
         _audioSource.PlayOneShot(_damage);
-        _polygonCollider2d.enabled = false;
+        _circleCollider2d.enabled = false;
 
         for(int j = 0; j < loopCount; j++)
         {
@@ -115,7 +103,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(_flashInterval);
             _spriteRenderer.enabled = true;
         }
-        _polygonCollider2d.enabled = true;
+        _circleCollider2d.enabled = true;
         _isHit = false;
     }
 

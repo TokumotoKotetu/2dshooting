@@ -13,13 +13,20 @@ public class LevelController : MonoBehaviour
     [SerializeField] public int _level;
     GameUIController _gameUIController;
     AudioSource _audioSource;
+    PlayerController _playerController;
     [SerializeField] AudioClip _levelUpAudio;
+    [SerializeField] GameObject _levelupPanel;
+
 
     public void Start()
     {
         GameObject obj = GameObject.Find("UIPanel");
         _audioSource = GetComponent<AudioSource>();
+        GameObject obj1 = GameObject.Find("Player");
+        _playerController = obj1.GetComponent<PlayerController>();
         _gameUIController = obj.GetComponent<GameUIController>();
+        Time.timeScale = 0.1f;
+        _levelupPanel.SetActive(true);
     }
     public void Damage()
     {
@@ -38,6 +45,12 @@ public class LevelController : MonoBehaviour
     }
     public void LevelUp()
     {
+        if(_playerController._haveWeaponNumber < _playerController.weaponPos.Length)
+        {
+            Time.timeScale = 0.01f;
+            _levelupPanel.SetActive(true);
+        }
+
         _level += 1;
         _hp = _maxHp;
         _gameUIController.LevelUPHeart();

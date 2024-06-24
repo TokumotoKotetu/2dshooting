@@ -5,45 +5,30 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject tabPanel;
-    [SerializeField] GameObject gameOverPanel;
-    bool tabMenuOpen;
+    [SerializeField] GameObject gameOverCanvas;
     LevelController _levelController;
     private void Start()
     {
         CloseMenu();
         CloseGameOver();
-        tabMenuOpen = false;
         GameObject obj = GameObject.Find("Player");
         _levelController = obj.GetComponent<LevelController>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && tabMenuOpen == false)
-        {
-            Debug.Log("メニューが開いた");
-            OpenMenu();
-            tabMenuOpen = true;
-        }
-        else if(Input.GetKeyDown(KeyCode.Tab) && tabMenuOpen == true)
-        {
-            Debug.Log("メニューが閉じた");
-            CloseMenu();
-            tabMenuOpen = false;
-        }
-
         if(_levelController._hp <= 0)
         {
             GameOver();
         }
     }
 
-    void OpenMenu()
+    public void OpenMenu()
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.1f;
         tabPanel.SetActive(true);
     }
 
-    void CloseMenu()
+    public void CloseMenu()
     {
         Time.timeScale = 1;
         tabPanel.SetActive(false);
@@ -52,11 +37,11 @@ public class MenuController : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0;
-        gameOverPanel.SetActive(true);
+        gameOverCanvas.SetActive(true);
     }
     void CloseGameOver()
     {
         Time.timeScale = 1;
-        gameOverPanel.SetActive(false);
+        gameOverCanvas.SetActive(false);
     }
 }
