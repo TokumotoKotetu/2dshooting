@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
     [SerializeField] int _maxHp;
     [SerializeField] public int _hp;
-    [SerializeField] int _experience;
-    [SerializeField] float _nextExperience;
-    [SerializeField] int _level;
+    [SerializeField] public int _experience;
+    [SerializeField] public float _nextExperience;
+    [SerializeField] public int _level;
     GameUIController _gameUIController;
     AudioSource _audioSource;
     [SerializeField] AudioClip _levelUpAudio;
+
     public void Start()
     {
         GameObject obj = GameObject.Find("UIPanel");

@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (weaponCounter == _haveWeaponNumber && _haveWeaponNumber < weaponPos.Length)
         {
             obj = (GameObject)Instantiate(crossbow, weaponPos[_haveWeaponNumber].transform.position, Quaternion.identity);
-            obj.transform.parent = player.transform;
+            obj.transform.parent = this.player.transform;
             weaponCounter++;
             _haveWeaponNumber++;
         }

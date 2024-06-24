@@ -39,7 +39,7 @@ public class MenuController : MonoBehaviour
 
     void OpenMenu()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.5f;
         tabPanel.SetActive(true);
     }
 
