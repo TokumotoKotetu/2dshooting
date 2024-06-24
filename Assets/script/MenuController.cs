@@ -7,14 +7,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject tabPanel;
     [SerializeField] GameObject gameOverPanel;
     bool tabMenuOpen;
-    PlayerController playerController;
+    LevelController _levelController;
     private void Start()
     {
         CloseMenu();
         CloseGameOver();
         tabMenuOpen = false;
         GameObject obj = GameObject.Find("Player");
-        playerController = obj.GetComponent<PlayerController>();
+        _levelController = obj.GetComponent<LevelController>();
     }
     private void Update()
     {
@@ -31,7 +31,7 @@ public class MenuController : MonoBehaviour
             tabMenuOpen = false;
         }
 
-        if(playerController.HP <= 0)
+        if(_levelController._hp <= 0)
         {
             GameOver();
         }

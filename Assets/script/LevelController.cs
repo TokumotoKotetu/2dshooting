@@ -6,20 +6,23 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] int _maxHp;
-    [SerializeField] int _hp;
+    [SerializeField] public int _hp;
     [SerializeField] int _experience;
     [SerializeField] float _nextExperience;
     [SerializeField] int _level;
+    GameUIController _gameUIController;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _levelUpAudio;
     public void Start()
     {
+        GameObject obj = GameObject.Find("UIPanel");
+        _audioSource = GetComponent<AudioSource>();
+        _gameUIController = obj.GetComponent<GameUIController>();
     }
-    public void Damege()
+    public void Damage()
     {
         _hp -= 1;
-        if( _hp <= 0)
-        {
-            //Ž€–S”»’è
-        }
+        _gameUIController.HeartDamage();
     }
     private void Update()
     {
@@ -35,6 +38,8 @@ public class LevelController : MonoBehaviour
     {
         _level += 1;
         _hp = _maxHp;
+        _gameUIController.LevelUPHeart();
+        _audioSource.PlayOneShot(_levelUpAudio);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject crossbow;
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] weaponPos;
-    [SerializeField] public int HP = 10;
+    LevelController _levelController;
     [SerializeField] public float moveSpeed = 100f;
     [SerializeField] float _flashInterval;
     [SerializeField] int loopCount;
@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     Vector2 mousePos;
     int _haveWeaponNumber = 0;
     bool _isHit;
-    PlayerState state;
 
     void Start()
     {
@@ -34,6 +33,8 @@ public class PlayerController : MonoBehaviour
         _polygonCollider2d = GetComponent<PolygonCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
+        _levelController = GetComponent<LevelController>();
+        GetGun();
     }
 
     void Update()
@@ -90,7 +91,8 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Enemy" || collision.tag == "EnemyBullet")
         {
             StartCoroutine(_hit());
-            HP -= 1;
+            _levelController.Damage();
+
             if(collision.tag == "EnemyBullet")
             {
                 Destroy(collision.gameObject);
